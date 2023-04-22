@@ -26,7 +26,6 @@ string[] ReleaseArray1(string[] array)
     return array.Where(x => x.Length <= MAX_SIZE_STRING).ToArray(); ;
 }
 
-
 string[] ReleaseArray2(string[] array)
 {
     string[] outputArray = new string[array.Length];
@@ -43,6 +42,32 @@ string[] ReleaseArray2(string[] array)
     return outputArray;
 }
 
+
+string[] ReleaseArray3(string[] array)
+{
+    int outputIterator = 0;
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= MAX_SIZE_STRING)
+        {
+            outputIterator++;
+        }
+    }
+    string[] outputArray = new string[outputIterator];
+    outputIterator = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= MAX_SIZE_STRING)
+        {
+
+            outputArray[outputIterator] = array[i];
+            outputIterator++;
+        }
+    }
+    return outputArray;
+}
+
 System.Console.Clear();
 System.Console.WriteLine("Please enter array");
 string[] inputArray = SingleLineInput(MAX_SIZE_INPUT_ARRAY);
@@ -56,4 +81,8 @@ PrintArrayString(releaseArray);
 
 System.Console.WriteLine("Way 2");
 releaseArray = ReleaseArray2(inputArray);
+PrintArrayString(releaseArray);
+
+System.Console.WriteLine("Way 3");
+releaseArray = ReleaseArray3(inputArray);
 PrintArrayString(releaseArray);
