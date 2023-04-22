@@ -27,6 +27,22 @@ string[] ReleaseArray1(string[] array)
 }
 
 
+string[] ReleaseArray2(string[] array)
+{
+    string[] outputArray = new string[array.Length];
+    int outputIterator = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= MAX_SIZE_STRING)
+        {
+            outputArray[outputIterator] = array[i];
+            outputIterator++;
+        }
+    }
+    Array.Resize(ref outputArray, outputIterator);
+    return outputArray;
+}
+
 System.Console.Clear();
 System.Console.WriteLine("Please enter array");
 string[] inputArray = SingleLineInput(MAX_SIZE_INPUT_ARRAY);
@@ -36,4 +52,8 @@ string[] releaseArray;
 
 System.Console.WriteLine("Way 1");
 releaseArray = ReleaseArray1(inputArray);
+PrintArrayString(releaseArray);
+
+System.Console.WriteLine("Way 2");
+releaseArray = ReleaseArray2(inputArray);
 PrintArrayString(releaseArray);
